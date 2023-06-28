@@ -1,0 +1,19 @@
+CREATE TABLE IF NOT EXISTS directors
+(
+id SERIAL4 PRIMARY KEY,
+firstname VARCHAR(128) NOT NULL,
+lastname VARCHAR(128) NOT NULL,
+birth_year SMALLINT NOT NULL,
+sex VARCHAR(6),
+country_of_birth VARCHAR(128)
+);
+
+CREATE TABLE IF NOT EXISTS films
+(
+id SERIAL4 PRIMARY KEY,
+title VARCHAR(128) UNIQUE NOT NULL,
+release_year SMALLINT NOT NULL,
+budget INTEGER,
+duration SMALLINT,
+director_id INTEGER REFERENCES directors
+);
