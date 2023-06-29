@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DigitalChiefTestTaskApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DigitalChiefTestTaskApplication.class, args);
+        SpringApplication.run(DigitalChiefTestTaskApplication.class);
     }
-
 }

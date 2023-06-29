@@ -2,20 +2,22 @@ package pronsky.digitalChiefTestTask.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pronsky.digitalChiefTestTask.data.entities.Director;
 import pronsky.digitalChiefTestTask.data.repositories.DirectorRepository;
 import pronsky.digitalChiefTestTask.service.DirectorService;
 import pronsky.digitalChiefTestTask.service.dto.DirectorDto;
-import pronsky.digitalChiefTestTask.service.mapper.EntityMapper;
+import pronsky.digitalChiefTestTask.service.mapper.Mapper;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class DirectorServiceImpl implements DirectorService {
 
-    private final EntityMapper mapper;
+    private final Mapper mapper;
     private final DirectorRepository repository;
 
     @Override
