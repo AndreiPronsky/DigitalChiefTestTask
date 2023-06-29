@@ -6,7 +6,7 @@ import pronsky.digitalChiefTestTask.data.entities.Director;
 import pronsky.digitalChiefTestTask.data.repositories.DirectorRepository;
 import pronsky.digitalChiefTestTask.service.DirectorService;
 import pronsky.digitalChiefTestTask.service.dto.DirectorDto;
-import pronsky.digitalChiefTestTask.service.mapper.Mapper;
+import pronsky.digitalChiefTestTask.service.mapper.EntityMapper;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class DirectorServiceImpl implements DirectorService {
 
-    private final Mapper mapper;
+    private final EntityMapper mapper;
     private final DirectorRepository repository;
 
     @Override

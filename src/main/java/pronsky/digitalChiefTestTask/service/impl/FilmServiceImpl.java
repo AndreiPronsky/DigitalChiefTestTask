@@ -6,7 +6,7 @@ import pronsky.digitalChiefTestTask.data.entities.Film;
 import pronsky.digitalChiefTestTask.data.repositories.FilmRepository;
 import pronsky.digitalChiefTestTask.service.FilmService;
 import pronsky.digitalChiefTestTask.service.dto.FilmDto;
-import pronsky.digitalChiefTestTask.service.mapper.Mapper;
+import pronsky.digitalChiefTestTask.service.mapper.EntityMapper;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,7 +16,8 @@ import java.util.stream.Collectors;
 public class FilmServiceImpl implements FilmService {
 
     private final FilmRepository repository;
-    private final Mapper mapper;
+    private final EntityMapper mapper;
+
     @Override
     public FilmDto getById(Long id) {
         return repository.findById(id)
@@ -34,7 +35,7 @@ public class FilmServiceImpl implements FilmService {
 
     @Override
     public FilmDto getByTitle(String title) {
-        return repository.findByTitleContaining(title)
+        return repository.findByTitle(title)
                 .map(mapper::toDto)
                 .orElseThrow(() -> new RuntimeException("Unable to find film containing " + title + "in title"));
     }
