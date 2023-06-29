@@ -1,40 +1,31 @@
-package pronsky.digitalChiefTestTask.data.entities;
+package pronsky.digitalChiefTestTask.service.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 import java.util.Objects;
 
-@Entity
 @Getter
 @Setter
-@Table(name = "films")
-public class Film {
-
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class FilmDto {
     private Long id;
-
-    @Column(name = "title")
+    @NotBlank
     private String title;
-
-    @Column(name = "release_year")
+    @Positive
     private Integer yearOfRelease;
-
-    @Column(name = "budget")
+    @Positive
     private Integer budget;
-
-    @Column(name = "duration")
+    @Positive
     private Integer duration;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Film film = (Film) o;
-        return Objects.equals(id, film.id) && Objects.equals(title, film.title) && Objects.equals(yearOfRelease, film.yearOfRelease) && Objects.equals(budget, film.budget) && Objects.equals(duration, film.duration);
+        FilmDto filmDto = (FilmDto) o;
+        return Objects.equals(id, filmDto.id) && Objects.equals(title, filmDto.title) && Objects.equals(yearOfRelease, filmDto.yearOfRelease) && Objects.equals(budget, filmDto.budget) && Objects.equals(duration, filmDto.duration);
     }
 
     @Override
@@ -44,7 +35,7 @@ public class Film {
 
     @Override
     public String toString() {
-        return "Film{" +
+        return "FilmDto{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", yearOfRelease=" + yearOfRelease +
