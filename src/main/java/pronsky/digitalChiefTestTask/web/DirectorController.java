@@ -25,34 +25,34 @@ public class DirectorController {
         return service.getAll();
     }
 
-    @GetMapping("/{lastname}")
+    @GetMapping("/lastname/{lastname}")
     public DirectorDto getOneByLastname(@PathVariable String lastname) {
         return service.getByLastName(lastname);
     }
 
-    @GetMapping("/{country}")
+    @GetMapping("/country/{country}")
     public List<DirectorDto> getAllByCountryOfBirth(@PathVariable String country) {
         return service.getByCountryOfBirth(country);
     }
 
-    @GetMapping("/{yearOfBirth}")
+    @GetMapping("/year/{yearOfBirth}")
     public List<DirectorDto> getAllByYearOfBirth(@PathVariable Integer yearOfBirth) {
         return service.getByYearOfBirth(yearOfBirth);
     }
 
-    @PostMapping
+    @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
-    public DirectorDto add(@RequestBody @Valid DirectorDto directorDto) {
+    public DirectorDto add(@ModelAttribute @Valid DirectorDto directorDto) {
         return service.save(directorDto);
     }
 
     @PutMapping("/edit")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public DirectorDto edit(@RequestBody @Valid DirectorDto directorDto) {
+    public DirectorDto edit(@ModelAttribute @Valid DirectorDto directorDto) {
         return service.save(directorDto);
     }
 
-    @PostMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteById(@PathVariable Long id) {
         service.deleteById(id);
