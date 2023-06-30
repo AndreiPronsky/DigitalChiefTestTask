@@ -1,0 +1,478 @@
+{
+	"info": {
+		"_postman_id": "3e32124b-7a2c-41e0-bcf6-3876343acf68",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28270358"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/films",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/films",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"films"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/films/5",
+			"protocolProfileBehavior": {
+				"followOriginalHttpMethod": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/films/5",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"films",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/directors/1",
+			"protocolProfileBehavior": {
+				"followOriginalHttpMethod": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/directors/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"directors",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/directors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/directors",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"directors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/directors/add?firstName=George&lastName=Lucas&yearOfBirth=1944&countryOfBirth=US&sex=male",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.variables.set('METHOD', 'POST');"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"followOriginalHttpMethod": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "firstName",
+							"value": "George",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Lucas",
+							"type": "text"
+						},
+						{
+							"key": "yearOfBirth",
+							"value": "1944",
+							"type": "text"
+						},
+						{
+							"key": "countryOfBirth",
+							"value": "US",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "male",
+							"type": "text"
+						},
+						{
+							"key": "films[0].title",
+							"value": "Indiana Jones and the Dial of Destiny",
+							"type": "text"
+						},
+						{
+							"key": "films[0].yearOfRelease",
+							"value": "2023",
+							"type": "text"
+						},
+						{
+							"key": "films[0].budget",
+							"value": "295000000",
+							"type": "text"
+						},
+						{
+							"key": "films[0].duration",
+							"value": "154",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/directors/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"directors",
+						"add"
+					],
+					"query": [
+						{
+							"key": "films[0].title",
+							"value": "Indiana Jones and the Dial of Destiny",
+							"disabled": true
+						},
+						{
+							"key": "films[0].yearOfRelease",
+							"value": "2023",
+							"disabled": true
+						},
+						{
+							"key": "films[0].budget",
+							"value": "295000000",
+							"disabled": true
+						},
+						{
+							"key": "films[0].duration",
+							"value": "154",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/films/add?title=Jaws&yearOfRelease=1975&budget=7000000&duration=124",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.variables.set('METHOD', 'POST');"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"followOriginalHttpMethod": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Jaws",
+							"type": "text"
+						},
+						{
+							"key": "yearOfRelease",
+							"value": "1975",
+							"type": "text"
+						},
+						{
+							"key": "budget",
+							"value": "7000000",
+							"type": "text"
+						},
+						{
+							"key": "duration",
+							"value": "124",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/films/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"films",
+						"add"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "Jaws",
+							"disabled": true
+						},
+						{
+							"key": "yearOfRelease",
+							"value": "1975",
+							"disabled": true
+						},
+						{
+							"key": "budget",
+							"value": "7000000",
+							"disabled": true
+						},
+						{
+							"key": "duration",
+							"value": "124",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "    localhost:8080/directors/edit?id=6&firstName=George&lastName=Lucas&yearOfBirth=1988&countryOfBirth=US&sex=male",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.variables.set('METHOD', 'PUT');"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"followOriginalHttpMethod": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "4",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "George",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Lucas",
+							"type": "text"
+						},
+						{
+							"key": "yearOfBirth",
+							"value": "1944",
+							"type": "text"
+						},
+						{
+							"key": "countryOfBirth",
+							"value": "US",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "male",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/directors/edit",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"directors",
+						"edit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/films/edit?id=15&title=Jaws&yearOfRelease=1975&budget=7000000&duration=124",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.variables.set('METHOD', 'PUT');"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"followOriginalHttpMethod": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "8",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "Jaws2",
+							"type": "text"
+						},
+						{
+							"key": "yearOfRelease",
+							"value": "1975",
+							"type": "text"
+						},
+						{
+							"key": "budget",
+							"value": "7000000",
+							"type": "text"
+						},
+						{
+							"key": "duration",
+							"value": "124",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/films/edit",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"films",
+						"edit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/films/delete/10",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.variables.set('METHOD', 'DELETE');"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"followOriginalHttpMethod": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "localhost:8080/films/delete/10",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"films",
+						"delete",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/directors/delete/3",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.variables.set('METHOD', 'DELETE');"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"followOriginalHttpMethod": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/directors/delete/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"directors",
+						"delete",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
