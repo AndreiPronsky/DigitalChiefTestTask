@@ -29,3 +29,24 @@
 Tomcat port : 8080.
 DB connection properties are stored in resources/application.properties
 Creation of DB named "films" needed before using sql-scripts.
+
+##### Installation
+You can clone this repository and use it locally:
+
+$ git clone https://github.com/AndreiPronsky/DigitalChiefTestTask
+Using Maven plugin
+
+First you should do clean installation:
+
+$ mvn clean install
+You can start application using Spring Boot custom command:
+
+$ mvn spring-boot:run
+Using Maven plugin and running JAR
+
+You can create JAR file using:
+
+$ mvn clean package
+and then run it with:
+
+$ java -jar target/*jar
