@@ -25,29 +25,29 @@ public class FilmController {
         return service.getAll();
     }
 
-    @GetMapping("/{title}")
+    @GetMapping("/title/{title}")
     public FilmDto getOneByTitle(@PathVariable String title) {
         return service.getByTitle(title);
     }
 
-    @GetMapping("/{year}")
+    @GetMapping("/year/{year}")
     public List<FilmDto> getAllByYearOfRelease(@PathVariable Integer year) {
         return service.getByYearOfRelease(year);
     }
 
-    @PostMapping()
+    @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
-    public FilmDto add(@RequestBody @Valid FilmDto filmDto) {
+    public FilmDto add(@ModelAttribute @Valid FilmDto filmDto) {
         return service.save(filmDto);
     }
 
     @PutMapping("/edit")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public FilmDto edit(@RequestBody @Valid FilmDto filmDto) {
+    public FilmDto edit(@ModelAttribute @Valid FilmDto filmDto) {
         return service.save(filmDto);
     }
 
-    @PostMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteById(@PathVariable Long id) {
         service.deleteById(id);
