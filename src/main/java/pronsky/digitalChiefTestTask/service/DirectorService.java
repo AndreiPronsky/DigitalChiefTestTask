@@ -9,12 +9,6 @@ public interface DirectorService {
 
     List<DirectorDto> getAll();
 
-    DirectorDto getByLastName(String lastName);
-
-    List<DirectorDto> getByCountryOfBirth(String country);
-
-    List<DirectorDto> getByYearOfBirth(Integer yearOfBirth);
-
     DirectorDto save(DirectorDto directorDto);
 
     void deleteById(Long id);

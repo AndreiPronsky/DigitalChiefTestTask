@@ -36,21 +36,6 @@ public class FilmServiceImpl implements FilmService {
     }
 
     @Override
-    public FilmDto getByTitle(String title) {
-        return repository.findByTitle(title)
-                .map(mapper::toDto)
-                .orElseThrow(() -> new RuntimeException("Unable to find film containing " + title + "in title"));
-    }
-
-    @Override
-    public List<FilmDto> getByYearOfRelease(Integer year) {
-        return repository.findByYearOfRelease(year)
-                .stream()
-                .map(mapper::toDto)
-                .collect(Collectors.toList());
-    }
-
-    @Override
     public FilmDto save(FilmDto filmDto) {
         Film film = mapper.toEntity(filmDto);
         return mapper.toDto(repository.save(film));

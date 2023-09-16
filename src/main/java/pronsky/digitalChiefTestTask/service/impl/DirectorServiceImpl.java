@@ -36,29 +36,6 @@ public class DirectorServiceImpl implements DirectorService {
     }
 
     @Override
-    public DirectorDto getByLastName(String lastName) {
-        return repository.findByLastName(lastName)
-                .map(mapper::toDto)
-                .orElseThrow(() -> new RuntimeException("Unable to find director with lastname : " + lastName));
-    }
-
-    @Override
-    public List<DirectorDto> getByCountryOfBirth(String country) {
-        return repository.findByCountryOfBirth(country)
-                .stream()
-                .map(mapper::toDto)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<DirectorDto> getByYearOfBirth(Integer yearOfBirth) {
-        return repository.findAllByYearOfBirth(yearOfBirth)
-                .stream()
-                .map(mapper::toDto)
-                .collect(Collectors.toList());
-    }
-
-    @Override
     public DirectorDto save(DirectorDto directorDto) {
         Director director = mapper.toEntity(directorDto);
         return mapper.toDto(repository.save(director));

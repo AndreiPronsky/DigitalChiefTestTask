@@ -32,7 +32,7 @@ public class Director {
     @Column(name = "country_of_birth")
     private String countryOfBirth;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "director_id")
     private List<Film> films;
 
