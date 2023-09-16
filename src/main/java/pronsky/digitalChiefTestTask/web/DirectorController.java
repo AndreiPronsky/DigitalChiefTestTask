@@ -2,11 +2,14 @@ package pronsky.digitalChiefTestTask.web;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import pronsky.digitalChiefTestTask.service.DirectorService;
 import pronsky.digitalChiefTestTask.service.dto.DirectorDto;
 
 import javax.validation.Valid;
+import javax.validation.ValidationException;
 import java.util.List;
 
 @RestController
@@ -16,7 +19,7 @@ public class DirectorController {
     private final DirectorService service;
 
     @GetMapping("/{id}")
-    public DirectorDto getOneById(@PathVariable Long id) {
+    public DirectorDto get(@PathVariable Long id) {
         return service.getById(id);
     }
 
@@ -25,36 +28,33 @@ public class DirectorController {
         return service.getAll();
     }
 
-    @GetMapping("/lastname/{lastname}")
-    public DirectorDto getOneByLastname(@PathVariable String lastname) {
-        return service.getByLastName(lastname);
+    @PostMapping()
+    public ResponseEntity<DirectorDto> create(@RequestBody @Valid DirectorDto directorDto, Errors errors) {
+        checkErrors(errors);
+        DirectorDto created = service.save(directorDto);
+        return buildResponseCreated(created);
     }
 
-    @GetMapping("/country/{country}")
-    public List<DirectorDto> getAllByCountryOfBirth(@PathVariable String country) {
-        return service.getByCountryOfBirth(country);
-    }
-
-    @GetMapping("/year/{yearOfBirth}")
-    public List<DirectorDto> getAllByYearOfBirth(@PathVariable Integer yearOfBirth) {
-        return service.getByYearOfBirth(yearOfBirth);
-    }
-
-    @PostMapping("/add")
-    @ResponseStatus(HttpStatus.CREATED)
-    public DirectorDto add(@ModelAttribute @Valid DirectorDto directorDto) {
+    @PutMapping("/{id}")
+    public DirectorDto edit(@PathVariable Long id, @RequestBody @Valid DirectorDto directorDto, Errors errors) {
+        checkErrors(errors);
+        directorDto.setId(id);
         return service.save(directorDto);
     }
 
-    @PutMapping("/edit")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public DirectorDto edit(@ModelAttribute @Valid DirectorDto directorDto) {
-        return service.save(directorDto);
-    }
-
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteById(@PathVariable Long id) {
         service.deleteById(id);
+    }
+
+    private ResponseEntity<DirectorDto> buildResponseCreated(DirectorDto created) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
+    }
+
+    private void checkErrors(Errors errors) {
+        if (errors.hasErrors()) {
+            throw new ValidationException((Throwable) errors);
+        }
     }
 }
