@@ -5,16 +5,18 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import pronsky.digitalChiefTestTask.service.DirectorService;
 import pronsky.digitalChiefTestTask.service.dto.DirectorDto;
+import pronsky.digitalChiefTestTask.service.exception.ValidationException;
 
 import javax.validation.Valid;
-import javax.validation.ValidationException;
+import java.net.URI;
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/directors")
+@RequestMapping("/api/directors")
 public class DirectorController {
     private final DirectorService service;
 
@@ -36,25 +38,42 @@ public class DirectorController {
     }
 
     @PutMapping("/{id}")
-    public DirectorDto edit(@PathVariable Long id, @RequestBody @Valid DirectorDto directorDto, Errors errors) {
+    public DirectorDto update(@PathVariable Long id, @RequestBody @Valid DirectorDto directorDto, Errors errors) {
         checkErrors(errors);
         directorDto.setId(id);
         return service.save(directorDto);
     }
 
-    @DeleteMapping("/{id}")
+    @PatchMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public DirectorDto updatePart(@PathVariable Long id, @RequestBody @Valid DirectorDto director) {
+        director.setId(id);
+        return service.save(director);
+    }
+
+
+        @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteById(@PathVariable Long id) {
         service.deleteById(id);
     }
 
     private ResponseEntity<DirectorDto> buildResponseCreated(DirectorDto created) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(created);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .location(getLocation(created))
+                .body(created);
     }
 
     private void checkErrors(Errors errors) {
         if (errors.hasErrors()) {
-            throw new ValidationException((Throwable) errors);
+            throw new ValidationException(errors);
         }
+    }
+
+    private URI getLocation(DirectorDto director) {
+        return ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/api/directors/{id}")
+                .buildAndExpand(director.getId())
+                .toUri();
     }
 }

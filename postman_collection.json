@@ -87,83 +87,43 @@
 			"response": []
 		},
 		{
-			"name": "localhost:8080/directors/add?firstName=George&lastName=Lucas&yearOfBirth=1944&countryOfBirth=US&sex=male",
+			"name": "localhost:8080/api/directors",
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"pm.variables.set('METHOD', 'POST');"
+							""
 						],
 						"type": "text/javascript"
 					}
 				}
 			],
 			"protocolProfileBehavior": {
-				"followOriginalHttpMethod": true
+				"followOriginalHttpMethod": true,
+				"insecureHTTPParser": true
 			},
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "firstName",
-							"value": "George",
-							"type": "text"
-						},
-						{
-							"key": "lastName",
-							"value": "Lucas",
-							"type": "text"
-						},
-						{
-							"key": "yearOfBirth",
-							"value": "1944",
-							"type": "text"
-						},
-						{
-							"key": "countryOfBirth",
-							"value": "US",
-							"type": "text"
-						},
-						{
-							"key": "sex",
-							"value": "male",
-							"type": "text"
-						},
-						{
-							"key": "films[0].title",
-							"value": "Indiana Jones and the Dial of Destiny",
-							"type": "text"
-						},
-						{
-							"key": "films[0].yearOfRelease",
-							"value": "2023",
-							"type": "text"
-						},
-						{
-							"key": "films[0].budget",
-							"value": "295000000",
-							"type": "text"
-						},
-						{
-							"key": "films[0].duration",
-							"value": "154",
-							"type": "text"
+					"mode": "raw",
+					"raw": "\r\n{\r\n  \"firstName\": \"Randall\",\r\n  \"lastName\": \"Bishop\",\r\n  \"yearOfBirth\": \"1992\"\r\n} \r\n",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					]
+					}
 				},
 				"url": {
-					"raw": "localhost:8080/directors/add",
+					"raw": "localhost:8080/api/directors",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"directors",
-						"add"
+						"api",
+						"directors"
 					],
 					"query": [
 						{
@@ -192,7 +152,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:8080/films/add?title=Jaws&yearOfRelease=1975&budget=7000000&duration=124",
+			"name": "localhost:8080/api/films",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -211,39 +171,24 @@
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "title",
-							"value": "Jaws",
-							"type": "text"
-						},
-						{
-							"key": "yearOfRelease",
-							"value": "1975",
-							"type": "text"
-						},
-						{
-							"key": "budget",
-							"value": "7000000",
-							"type": "text"
-						},
-						{
-							"key": "duration",
-							"value": "124",
-							"type": "text"
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": 12,\r\n    \"yearOfRelease\": 1999\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					]
+					}
 				},
 				"url": {
-					"raw": "localhost:8080/films/add",
+					"raw": "localhost:8080/api/films/",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
+						"api",
 						"films",
-						"add"
+						""
 					],
 					"query": [
 						{
@@ -272,7 +217,7 @@
 			"response": []
 		},
 		{
-			"name": "    localhost:8080/directors/edit?id=6&firstName=George&lastName=Lucas&yearOfBirth=1988&countryOfBirth=US&sex=male",
+			"name": "localhost:8080/api/directors/8",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -291,56 +236,31 @@
 				"method": "PUT",
 				"header": [],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "id",
-							"value": "4",
-							"type": "text"
-						},
-						{
-							"key": "firstName",
-							"value": "George",
-							"type": "text"
-						},
-						{
-							"key": "lastName",
-							"value": "Lucas",
-							"type": "text"
-						},
-						{
-							"key": "yearOfBirth",
-							"value": "1944",
-							"type": "text"
-						},
-						{
-							"key": "countryOfBirth",
-							"value": "US",
-							"type": "text"
-						},
-						{
-							"key": "sex",
-							"value": "male",
-							"type": "text"
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Spi\",\r\n    \"lastName\": \"Stephen\",\r\n    \"yearOfBirth\": 1990\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					]
+					}
 				},
 				"url": {
-					"raw": "localhost:8080/directors/edit",
+					"raw": "localhost:8080/api/directors/1",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
+						"api",
 						"directors",
-						"edit"
+						"1"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "localhost:8080/films/edit?id=15&title=Jaws&yearOfRelease=1975&budget=7000000&duration=124",
+			"name": "localhost:8080/api/films/3",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -359,51 +279,31 @@
 				"method": "PUT",
 				"header": [],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "id",
-							"value": "8",
-							"type": "text"
-						},
-						{
-							"key": "title",
-							"value": "Jaws2",
-							"type": "text"
-						},
-						{
-							"key": "yearOfRelease",
-							"value": "1975",
-							"type": "text"
-						},
-						{
-							"key": "budget",
-							"value": "7000000",
-							"type": "text"
-						},
-						{
-							"key": "duration",
-							"value": "124",
-							"type": "text"
+					"mode": "raw",
+					"raw": "{\r\n    \"title\" : \"Ready Player One\",\r\n    \"yearOfRelease\": 1999\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					]
+					}
 				},
 				"url": {
-					"raw": "localhost:8080/films/edit",
+					"raw": "localhost:8080/api/films/1",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
+						"api",
 						"films",
-						"edit"
+						"1"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "localhost:8080/films/delete/10",
+			"name": "localhost:8080/api/films/10",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -441,7 +341,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:8080/directors/delete/3",
+			"name": "localhost:8080/api/directors/3",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -469,6 +369,64 @@
 						"directors",
 						"delete",
 						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/directors/1",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Jake\",\r\n    \"lastName\": \"Stephen\",\r\n    \"yearOfBirth\": 1990\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/directors/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"directors",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/films/1",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Raw Jaw\",\r\n    \"yearOfRelease\": 2022\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/films/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"films",
+						"1"
 					]
 				}
 			},
